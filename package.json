@@ -1,0 +1,35 @@
+{
+  "name": "vue2-leaflet-polygonfillpattern",
+  "version": "1.0.0",
+  "description": "polygon-fillPattern plugin extension for vue2-leaflet package",
+  "main": "Vue2LeafletPolygonFillPattern.vue",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:guillaumejounel/vue2-leaflet-polygonfillpattern.git"
+  },
+  "keywords": [
+    "vue2",
+    "leaflet",
+    "polygon-fillpattern"
+  ],
+  "author": "Guillaume Jounel (http://guillaumejounel.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guillaumejounel/vue2-leaflet-polygonfillpattern.git/issues"
+  },
+  "homepage": "https://github.com/guillaumejounel/vue2-leaflet-polygonfillpattern.git/#readme",
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  }
+}
