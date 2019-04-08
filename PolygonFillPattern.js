@@ -9,49 +9,6 @@ import L from "leaflet";
 (function(window, document) {
   if (L.Browser.svg) {
     L.SVG.include({
-      _updateStyle: function(layer) {
-        var path = layer._path,
-          options = layer.options;
-
-        if (!path) {
-          return;
-        }
-
-        if (options.stroke) {
-          path.setAttribute("stroke", options.color);
-          path.setAttribute("stroke-opacity", options.opacity);
-          path.setAttribute("stroke-width", options.weight);
-          path.setAttribute("stroke-linecap", options.lineCap);
-          path.setAttribute("stroke-linejoin", options.lineJoin);
-
-          if (options.dashArray) {
-            path.setAttribute("stroke-dasharray", options.dashArray);
-          } else {
-            path.removeAttribute("stroke-dasharray");
-          }
-
-          if (options.dashOffset) {
-            path.setAttribute("stroke-dashoffset", options.dashOffset);
-          } else {
-            path.removeAttribute("stroke-dashoffset");
-          }
-        } else {
-          path.setAttribute("stroke", "none");
-        }
-
-        if (options.fill) {
-          if (options.fillPattern) {
-            this.__fillPattern(layer);
-          } else {
-            path.setAttribute("fill", options.fillColor || options.color);
-          }
-          path.setAttribute("fill-opacity", options.fillOpacity);
-          path.setAttribute("fill-rule", options.fillRule || "evenodd");
-        } else {
-          path.setAttribute("fill", "none");
-        }
-      },
-
       __fillPattern: function(layer) {
         var path = layer._path,
           options = layer.options;
@@ -60,6 +17,7 @@ import L from "leaflet";
           this._defs = L.SVG.create("defs");
           this._container.appendChild(this._defs);
         }
+
         var _img_url = options.fillPattern;
         var _ref_id =
           _img_url +
@@ -104,6 +62,16 @@ import L from "leaflet";
         }
         path.setAttribute("fill", "url(#" + _ref_id + ")");
       }
+    });
+
+    L.SVG.addInitHook(function() {
+      let _old_updateStyle = this._updateStyle;
+      this._updateStyle = function(layer) {
+        _old_updateStyle.apply(this, arguments);
+        if (layer.options.fillPattern) {
+          this.__fillPattern(layer);
+        }
+      };
     });
   }
 })(this, document);
