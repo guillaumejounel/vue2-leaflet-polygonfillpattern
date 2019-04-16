@@ -17,6 +17,10 @@ const props = {
   latLngs: {
     type: Array,
     default: () => []
+  },
+  imageScale: {
+    type: Number,
+    default: 1
   }
 };
 
@@ -25,15 +29,20 @@ export default {
   mixins: [LPolygon],
   props,
   mounted() {
-    if (this.fillPattern) {
-      this.polygonOptions.fillPattern = this.fillPattern;
-    }
+    this.polygonOptions.fillPattern = this.fillPattern;
+    this.polygonOptions.imageScale = this.imageScale;
     this.mapObject = L.polygon(this.latLngs, this.polygonOptions);
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, this.$options.props);
     this.ready = true;
     this.parentContainer = findRealParent(this.$parent);
     this.parentContainer.addLayer(this, !this.visible);
+  },
+  watch: {
+    imageScale(v) {
+      this.mapObject.options.imageScale = v;
+      this.mapObject._renderer._updateStyle(this.mapObject);
+    }
   }
 };
 </script>
