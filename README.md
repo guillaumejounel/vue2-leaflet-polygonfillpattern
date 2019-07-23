@@ -11,6 +11,7 @@ This is a [polygon-fillPattern plugin](https://github.com/lwsu/leaflet-polygon-f
 ## Demo
 
 ![demo gif](http://guillaumejounel.com/dev/vue2-leaflet-polygonfillpattern/demo.gif)
+
 Check out the [live demo](http://guillaumejounel.com/dev/vue2-leaflet-polygonfillpattern/)
 
 ## Usage
