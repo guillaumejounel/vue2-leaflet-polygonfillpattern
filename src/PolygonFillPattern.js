@@ -77,7 +77,6 @@ import L from "leaflet";
     L.SVG.addInitHook(function() {
       let _old_updateStyle = this._updateStyle;
       this._updateStyle = function(layer) {
-        console.log("layer", layer, "this", this);
         _old_updateStyle.apply(this, arguments);
         if (layer.options.fillPattern) {
           this.__fillPattern(layer);
