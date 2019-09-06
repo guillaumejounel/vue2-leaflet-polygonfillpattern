@@ -27,20 +27,12 @@ In your component:
     <l-polygon-fill-pattern
       :lat-lngs="coordinates"
       ...
-      className="PolygonFillPattern"
       fillPattern="IMAGE"
       imageScale="X"
     />
 
 - `fillPattern` can be any image url or asset (e.g. `:fillPattern="require(...)"`)
 - `imageScale` is a number that defines the image scale (e.g. `:imageScale="0.6"`)
-- Any polygon for which `PolygonFillPattern` is specified as part of `className` will be removed if it does not have a `fillPattern` property. This is a workaround to fix the issue specified in the next section.
-
-## Known Issue
-
-For some reasons, both a `Polygon` (default, without fill pattern) and a `PolygonFillpattern` are sometimes being rendered simultaneously. It may be an issue if `PolygonFillpattern` is dynamically hidden since the other `Polygon` will still be displayed. To tackle this problem, `PolygonFillPattern` can be included in the `className` property. Any `Polygon` that has a `PolygonFillPattern` `className` property but no `fillPattern` option will be removed.
-
-If you understand this issue and know how to fix it properly, you are more than welcome to contribute.
 
 ## Author
 

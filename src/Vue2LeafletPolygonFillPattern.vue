@@ -31,9 +31,8 @@ export default {
     };
   },
   mounted() {
-    this.polygonOptions.fillPattern = this.fillPattern;
-    this.polygonOptions.imageScale = this.imageScale;
-    this.mapObject = L.polygon(this.latLngs, this.polygonOptions);
+    this.mapObject.options.fillPattern = this.fillPattern;
+    this.mapObject.options.imageScale = this.imageScale;
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.ready = true;
@@ -41,6 +40,7 @@ export default {
     this.parentContainer.addLayer(this, !this.visible);
     this.$nextTick(() => {
       this.$emit("ready", this.mapObject);
+      this.mapObject._renderer._updateStyle(this.mapObject);
     });
   },
   watch: {

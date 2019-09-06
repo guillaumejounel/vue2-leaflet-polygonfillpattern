@@ -80,11 +80,6 @@ import L from "leaflet";
         _old_updateStyle.apply(this, arguments);
         if (layer.options.fillPattern) {
           this.__fillPattern(layer);
-        } else if (
-          layer.options.className &&
-          layer.options.className.includes("PolygonFillPattern")
-        ) {
-          this._removePath();
         }
       };
     });
