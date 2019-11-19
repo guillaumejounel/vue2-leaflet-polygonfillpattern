@@ -1,6 +1,6 @@
 {
   "name": "vue2-leaflet-polygonfillpattern",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "polygon-fillPattern plugin extension for vue2-leaflet package",
   "main": "plugin.js",
   "repository": {

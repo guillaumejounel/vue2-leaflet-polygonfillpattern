@@ -1,5 +1,7 @@
 <template>
-  <div style="display: none;"><slot v-if="ready" /></div>
+  <div style="display: none;">
+    <slot v-if="ready" />
+  </div>
 </template>
 
 <script>
@@ -40,13 +42,15 @@ export default {
     this.parentContainer.addLayer(this, !this.visible);
     this.$nextTick(() => {
       this.$emit("ready", this.mapObject);
-      this.mapObject._renderer._updateStyle(this.mapObject);
+      this.mapObject._renderer &&
+        this.mapObject._renderer._updateStyle(this.mapObject);
     });
   },
   watch: {
     imageScale(v) {
       this.mapObject.options.imageScale = v;
-      this.mapObject._renderer._updateStyle(this.mapObject);
+      this.mapObject._renderer &&
+        this.mapObject._renderer._updateStyle(this.mapObject);
     }
   },
   beforeDestroy() {
