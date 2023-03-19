@@ -51,6 +51,11 @@ export default {
       this.mapObject.options.imageScale = v;
       this.mapObject._renderer &&
         this.mapObject._renderer._updateStyle(this.mapObject);
+    },
+    fillPattern(v) {
+      this.mapObject.options.fillPattern = v;
+      this.mapObject._renderer &&
+        this.mapObject._renderer._updateStyle(this.mapObject);
     }
   },
   beforeDestroy() {
